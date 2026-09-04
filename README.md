@@ -6,10 +6,22 @@
   <b>A full-featured web platform built during the Kanz Hackathon training to demonstrate rapid web development powered by AI tools</b>
 </p>
 
-[![Kanz Hackathon](https://img.shields.io/badge/Kanz%20Hackathon-AI%20Training%20Project-F5A623?style=for-the-badge&logo=codeforces&logoColor=white)](https://github.com/Hanan71/Bakery_web)
-[![AI-Assisted](https://img.shields.io/badge/AI--Powered-Rapid%20Development-00C4CC?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/Hanan71/Bakery_web)
-[![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-MVC-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" valign="middle">
+        <img width="240" alt="Screenshot 1" src="https://github.com/user-attachments/assets/6f7dcd89-9928-47a4-98c2-2a5d61542a82" />
+      </td>
+      <td align="center" valign="middle">
+        <img width="240" alt="Screenshot 2" src="https://github.com/user-attachments/assets/b6fb93e0-0d2e-430b-b236-4470ea0a5a8d" />
+      </td>
+      <td align="center" valign="middle">
+        <img width="240" alt="Screenshot 3" src="https://github.com/user-attachments/assets/c1db903e-3ed6-4022-87a6-524120f27a2f" />
+      </td>
+    </tr>
+  </table>
 </div>
 
 ---
