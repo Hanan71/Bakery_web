@@ -76,7 +76,6 @@ By pairing AI-assisted engineering with standard software design principles—sp
 ┣ 📄 appsettings.json # Configuration files and connection strings
 ┗ 📄 Program.cs       # Application bootstrapping and service dependencies
 ```
-
 ---
 
 ### 🚀 Getting Started
