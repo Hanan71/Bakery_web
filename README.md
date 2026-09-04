@@ -34,6 +34,8 @@ By pairing AI-assisted engineering with standard software design principles—sp
 
 [![Guinness World Record](https://img.shields.io/badge/Guinness%20World%20Records-Largest%20Hackathon-FF8C00?style=for-the-badge&logo=target&logoColor=black&labelColor=FFD700)](https://github.com/Hanan71/Bakery_web)
 
+https://try.ka.nz/hack/day8
+
 ---
 
 ### ⚡ AI-Driven Rapid Development Highlights
