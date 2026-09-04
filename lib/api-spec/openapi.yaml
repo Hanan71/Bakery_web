@@ -1,0 +1,432 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: Kanz Bakery API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: categories
+    description: Menu categories
+  - name: menu-items
+    description: Menu items
+  - name: orders
+    description: Bulk and catering orders
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /categories:
+    get:
+      operationId: listCategories
+      tags: [categories]
+      summary: List all menu categories
+      responses:
+        "200":
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+
+  /menu-items:
+    get:
+      operationId: listMenuItems
+      tags: [menu-items]
+      summary: List menu items
+      parameters:
+        - name: categoryId
+          in: query
+          required: false
+          schema:
+            type: ["integer", "null"]
+        - name: featured
+          in: query
+          required: false
+          schema:
+            type: ["boolean", "null"]
+      responses:
+        "200":
+          description: List of menu items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MenuItem"
+
+  /menu-items/{id}:
+    get:
+      operationId: getMenuItem
+      tags: [menu-items]
+      summary: Get a single menu item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Menu item details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MenuItem"
+        "404":
+          description: Not found
+
+  /menu-items/{id}/ratings:
+    post:
+      operationId: rateMenuItem
+      tags: [menu-items]
+      summary: Submit a rating for a menu item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RatingInput"
+      responses:
+        "201":
+          description: Rating submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rating"
+        "400":
+          description: Invalid input
+
+  /menu-items/{id}/ratings-list:
+    get:
+      operationId: listMenuItemRatings
+      tags: [menu-items]
+      summary: Get ratings for a menu item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of ratings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Rating"
+
+  /menu-stats:
+    get:
+      operationId: getMenuStats
+      tags: [menu-items]
+      summary: Get menu statistics (totals, top-rated items)
+      responses:
+        "200":
+          description: Menu stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MenuStats"
+
+  /orders:
+    get:
+      operationId: listOrders
+      tags: [orders]
+      summary: List all orders
+      responses:
+        "200":
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+    post:
+      operationId: createOrder
+      tags: [orders]
+      summary: Place a bulk or catering order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderInput"
+      responses:
+        "201":
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "400":
+          description: Invalid input
+
+  /orders/{id}:
+    get:
+      operationId: getOrder
+      tags: [orders]
+      summary: Get order details
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Order details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "404":
+          description: Not found
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    Category:
+      type: object
+      required: [id, name, slug]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: ["string", "null"]
+        imageUrl:
+          type: ["string", "null"]
+
+    MenuItem:
+      type: object
+      required: [id, name, price, categoryId, averageRating, ratingCount]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: ["string", "null"]
+        price:
+          type: number
+        imageUrl:
+          type: ["string", "null"]
+        categoryId:
+          type: integer
+        categoryName:
+          type: ["string", "null"]
+        featured:
+          type: boolean
+        available:
+          type: boolean
+        averageRating:
+          type: number
+        ratingCount:
+          type: integer
+
+    RatingInput:
+      type: object
+      required: [stars, reviewerName]
+      properties:
+        stars:
+          type: integer
+          minimum: 1
+          maximum: 5
+        reviewerName:
+          type: string
+        comment:
+          type: ["string", "null"]
+
+    Rating:
+      type: object
+      required: [id, menuItemId, stars, reviewerName, createdAt]
+      properties:
+        id:
+          type: integer
+        menuItemId:
+          type: integer
+        stars:
+          type: integer
+        reviewerName:
+          type: string
+        comment:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+
+    MenuStats:
+      type: object
+      required: [totalItems, totalCategories, topRatedItems, averageRating]
+      properties:
+        totalItems:
+          type: integer
+        totalCategories:
+          type: integer
+        averageRating:
+          type: number
+        topRatedItems:
+          type: array
+          items:
+            $ref: "#/components/schemas/MenuItem"
+
+    OrderItem:
+      type: object
+      required: [menuItemId, quantity]
+      properties:
+        menuItemId:
+          type: integer
+        quantity:
+          type: integer
+        notes:
+          type: ["string", "null"]
+
+    OrderInput:
+      type: object
+      required: [type, customerName, customerEmail, customerPhone, scheduledDate, items, paymentMethod]
+      properties:
+        type:
+          type: string
+          enum: [bulk, catering]
+        customerName:
+          type: string
+        customerEmail:
+          type: string
+        customerPhone:
+          type: string
+        scheduledDate:
+          type: string
+        eventDescription:
+          type: ["string", "null"]
+        guestCount:
+          type: ["integer", "null"]
+        deliveryAddress:
+          type: ["string", "null"]
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderItem"
+        specialRequests:
+          type: ["string", "null"]
+        paymentMethod:
+          type: string
+          enum: [card, cash_on_delivery]
+
+    CheckoutSessionInput:
+      type: object
+      required: [orderData, successUrl, cancelUrl]
+      properties:
+        orderData:
+          $ref: "#/components/schemas/OrderInput"
+        successUrl:
+          type: string
+        cancelUrl:
+          type: string
+
+    CheckoutSessionResponse:
+      type: object
+      required: [sessionUrl, orderId]
+      properties:
+        sessionUrl:
+          type: string
+        orderId:
+          type: integer
+
+    Order:
+      type: object
+      required: [id, type, customerName, customerEmail, customerPhone, scheduledDate, status, totalAmount, items, createdAt, paymentMethod, paymentStatus]
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+          enum: [bulk, catering]
+        customerName:
+          type: string
+        customerEmail:
+          type: string
+        customerPhone:
+          type: string
+        scheduledDate:
+          type: string
+        eventDescription:
+          type: ["string", "null"]
+        guestCount:
+          type: ["integer", "null"]
+        deliveryAddress:
+          type: ["string", "null"]
+        status:
+          type: string
+          enum: [pending, confirmed, in_progress, completed, cancelled]
+        paymentMethod:
+          type: string
+          enum: [card, cash_on_delivery]
+        paymentStatus:
+          type: string
+          enum: [pending, paid, failed]
+        stripeSessionId:
+          type: ["string", "null"]
+        totalAmount:
+          type: number
+        specialRequests:
+          type: ["string", "null"]
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderLineItem"
+        createdAt:
+          type: string
+
+    OrderLineItem:
+      type: object
+      required: [id, menuItemId, menuItemName, quantity, unitPrice, subtotal]
+      properties:
+        id:
+          type: integer
+        menuItemId:
+          type: integer
+        menuItemName:
+          type: string
+        quantity:
+          type: integer
+        unitPrice:
+          type: number
+        subtotal:
+          type: number
+        notes:
+          type: ["string", "null"]

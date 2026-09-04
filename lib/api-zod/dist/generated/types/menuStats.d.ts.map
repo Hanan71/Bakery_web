@@ -1,0 +1,1 @@
+{"version":3,"file":"menuStats.d.ts","sourceRoot":"","sources":["../../../src/generated/types/menuStats.ts"],"names":[],"mappings":"AAAA;;;;;;GAMG;AACH,OAAO,KAAK,EAAE,QAAQ,EAAE,MAAM,YAAY,CAAC;AAE3C,MAAM,WAAW,SAAS;IACxB,UAAU,EAAE,MAAM,CAAC;IACnB,eAAe,EAAE,MAAM,CAAC;IACxB,aAAa,EAAE,MAAM,CAAC;IACtB,aAAa,EAAE,QAAQ,EAAE,CAAC;CAC3B"}
