@@ -12,13 +12,13 @@
   <table>
     <tr>
       <td align="center" valign="middle">
-        <img width="240" alt="Screenshot 1" src="https://github.com/user-attachments/assets/6f7dcd89-9928-47a4-98c2-2a5d61542a82" />
+        <img width="240" alt="Screenshot 1" src="https://github.com/user-attachments/assets/56467ab8-d427-402f-9956-d636b863f896" />
       </td>
       <td align="center" valign="middle">
-        <img width="240" alt="Screenshot 2" src="https://github.com/user-attachments/assets/b6fb93e0-0d2e-430b-b236-4470ea0a5a8d" />
+        <img width="240" alt="Screenshot 2" src="https://github.com/user-attachments/assets/b10b9957-447a-44da-b08d-6730318f151d" />
       </td>
       <td align="center" valign="middle">
-        <img width="240" alt="Screenshot 3" src="https://github.com/user-attachments/assets/c1db903e-3ed6-4022-87a6-524120f27a2f" />
+        <img width="240" alt="Screenshot 3" src="https://github.com/user-attachments/assets/b985e230-5961-43ed-addd-e4ec64545c90" />
       </td>
     </tr>
   </table>
