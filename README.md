@@ -67,6 +67,7 @@ By pairing AI-assisted engineering with standard software design principles—sp
 ### 📂 Project Structure
 
 ```text
+<pre>
 📦 Bakery_web
 ┣ 📁 Controllers      # AI-assisted request orchestration & routing
 ┣ 📁 Models           # Data entities and business logic validation schemas
@@ -75,6 +76,7 @@ By pairing AI-assisted engineering with standard software design principles—sp
 ┣ 📁 Data/Migrations  # Database context, seed configs, and migration history
 ┣ 📄 appsettings.json # Configuration files and connection strings
 ┗ 📄 Program.cs       # Application bootstrapping and service dependencies
+</pre>
 ```
 ---
 
