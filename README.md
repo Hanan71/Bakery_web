@@ -32,9 +32,7 @@ This web application was developed as part of an intensive, hands-on training tr
 
 By pairing AI-assisted engineering with standard software design principles—specifically the **Model-View-Controller (MVC)** architectural pattern—the project illustrates how full-stack solutions (catalog browsing, cart interaction, and database persistence) can be conceptualized, structured, and deployed in record time.
 
-[![Guinness World Record](https://img.shields.io/badge/Guinness%20World%20Records-Largest%20Hackathon-FF8C00?style=for-the-badge&logo=target&logoColor=black&labelColor=FFD700)](https://github.com/Hanan71/Bakery_web)
-
-https://try.ka.nz/hack/day8
+[![Guinness World Record](https://img.shields.io/badge/Guinness%20World%20Records-Largest%20Hackathon-FF8C00?style=for-the-badge&logo=target&logoColor=black&labelColor=FFD700)](https://try.ka.nz/hack/day8)
 
 ---
 
