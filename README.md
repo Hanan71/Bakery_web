@@ -64,19 +64,24 @@ By pairing AI-assisted engineering with standard software design principles—sp
 
 ---
 
+</div>
+
 ### 📂 Project Structure
 
+<div align="left" dir="ltr">
 
-<pre>
-📦 Bakery_web
-┣ 📁 Controllers      # AI-assisted request orchestration & routing
-┣ 📁 Models           # Data entities and business logic validation schemas
-┣ 📁 Views            # Razor UI templates and responsive presentation layers
-┣ 📁 wwwroot          # Static assets (CSS, JS, images)
-┣ 📁 Data/Migrations  # Database context, seed configs, and migration history
-┣ 📄 appsettings.json # Configuration files and connection strings
-┗ 📄 Program.cs       # Application bootstrapping and service dependencies
-</pre>
+```text
+Bakery_web/
+├── Controllers/         # AI-assisted request orchestration & routing
+├── Models/              # Data entities and business logic validation schemas
+├── Views/               # Razor UI templates and responsive presentation layers
+├── wwwroot/             # Static assets (CSS, JS, images)
+├── Data/                # Database context, seed configs, and migration history
+├── appsettings.json     # Configuration files and connection strings
+└── Program.cs           # Application bootstrapping and service dependencies
+```
+
+</div>
 
 ---
 
@@ -102,9 +107,3 @@ By pairing AI-assisted engineering with standard software design principles—sp
    ```bash
    dotnet run
    ```
-
----
-
-<div align="center">
-  <sub>Engineered during the Kanz Hackathon to explore the speed and efficiency of AI-augmented software engineering ✨</sub>
-</div>
